@@ -1,5 +1,3 @@
-/** @module Rach */
-
 /** Class representing Rach client */
 class Rach {
     /**
@@ -558,4 +556,4 @@ Rach.Publisher = class {
     }
 };
 
-// module.exports = Rach;
+export default Rach;
