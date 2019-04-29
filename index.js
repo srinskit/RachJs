@@ -105,10 +105,6 @@ class Rach {
      * @param {object} event - The websocket event
      */
     ws_on_open(event) {
-        if (this.on_start) {
-            this.on_start();
-            this.on_start = null;
-        }
         this.connected = true;
         this.log('ws opened');
     }
@@ -192,8 +188,13 @@ class Rach {
         if (typ === 'auth') {
             if (!((msg.data || {}).success || false))
                 this.stop();
-            else
+            else {
                 this.private_id = msg.data.id;
+                if (this.on_start) {
+                    this.on_start();
+                    this.on_start = null;
+                }
+            }
         } else if (typ === 'err') {
             if (matcher != null && matcher in this.request_map) {
                 let tmp = this.request_map[matcher];
