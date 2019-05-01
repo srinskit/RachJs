@@ -4,6 +4,10 @@ From CDN
 ```
 https://cdn.jsdelivr.net/gh/srinskit/RachJs@master/index.js
 ```
+From NPM
+```
+npm install rachjs
+```
 ## Usage
 Browser
 ```
@@ -40,4 +44,37 @@ Browser
 </body>
 
 </html>
+```
+ReactJs
+```
+import React, {Component} from "react";
+import Rach from "rachjs";
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            connectedToRach: false,
+        };
+        this.rach = new Rach("ws://localhost:8080", {username: "test", password: "pass"});
+        this.rach.enable_debug();
+    }
+
+    componentDidMount() {
+        this.rach.start(() => {
+            this.setState({connectedToRach: true});
+        });
+    }
+
+    componentWillUnmount() {
+        this.rach.stop();
+    }
+
+    render() {
+        return (<div>"Hi"</div>);
+    }
+
+}
+
+export default App;
 ```
