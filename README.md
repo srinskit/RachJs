@@ -1,4 +1,7 @@
 # RachJs: A Javascipt client for Rach
+
+[![NPM](https://nodei.co/npm/rachjs.png)](https://nodei.co/npm/rachjs/)
+
 ## Install and use
 From CDN
 ```
